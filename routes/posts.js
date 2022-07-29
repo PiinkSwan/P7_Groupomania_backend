@@ -20,6 +20,6 @@ router.get("/:postId/comments", auth, commentsCtrl.getComments); // Obtention de
 router.delete("/comments/:id", auth, commentsCtrl.deleteComment); // Suppression d'un commentaire
 
 //Likes
-//router.post("/:postId/likes", auth, likesCtrl.addLike);
+router.post("/:postId/likes", auth, likesCtrl.addLike);
 
 module.exports = router; 

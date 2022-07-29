@@ -1,16 +1,7 @@
 const http = require('http');
+const app = require('./app');
 
-require('dotenv').config();
-const express = require('express');
-const app = express();
-
-const dotenv = require("dotenv");
-const result = dotenv.config();
-if (result.error) {
-  throw result.error;
-}
-
-//Configuration du serveur
+// Configuration du serveur -------------------------------------------------------------------------------------------
 const normalizePort = val => {
   const port = parseInt(val, 10);
 
@@ -22,7 +13,7 @@ const normalizePort = val => {
   }
   return false;
 };
-const port = normalizePort(process.env.PORT || '3000'); //Backend disponible sur un port défini, ou sur le port 3000
+const port = normalizePort(process.env.PORT || '3000'); // Backend disponible sur un port défini, ou sur le port 3000
 app.set('port', port);
 
 const errorHandler = error => {
@@ -48,7 +39,7 @@ const errorHandler = error => {
 const server = http.createServer(app);
 
 server.on('error', errorHandler);
-server.on('listening', () => { //Ecoute du port et retour console
+server.on('listening', () => { // Ecoute du port défini et retour console
   const address = server.address();
   const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port;
   console.log('Listening on ' + bind);
